@@ -1,35 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" href="./assets/img/4geeks.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Hello Rigo with Vanilla.js</title>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Card Generator</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: green;
+      font-family: Arial, sans-serif;
+    }
 
-    <!-- Fontawesome is our recomended library for icons -->
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
-      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <!-- Write your HTML code here, you can delete everything withing the body tags -->
-    <div class="container-fluid text-center">
-      <h1 class="mt-5">Hello Rigo!</h1>
-      <img src="./assets/img/rigo-baby.jpg" />
-      <p class="alert alert-warning mt-4">
-        If this text is <b>not</b> centered and <b>yellow</b>, you probably have
-        an error
-      </p>
-      <div class="fixed-bottom p-4">
-        Made with ❤️ by
-        <a href="https://www.4geeksacademy.com">4Geeks Academy</a>
-      </div>
-    </div>
+    /* Base card styles */
+    .card {
+      width: 150px;
+      height: 220px;
+      border-radius: 12px;
+      background: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2rem;
+      font-weight: bold;
+      position: relative;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
 
-    <!-- Do not delete this script tag, this is what connects your HTML with the Javascript code -->
-    <script type="module" src="/app.js"></script>
-  </body>
+    /* Suit colors */
+    .heart, .diamond { color: red; }
+    .spade, .club { color: black; }
+
+    /* Small corners */
+    .corner {
+      position: absolute;
+      font-size: 1rem;
+    }
+    .top-left { top: 10px; left: 10px; }
+    .bottom-right { bottom: 10px; right: 10px; transform: rotate(180deg); }
+
+    /* Button style */
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: white;
+      font-weight: bold;
+    }
+    button:hover {
+      background: lightgray;
+    }
+  </style>
+</head>
+<body>
+  <!-- Card goes here -->
+  <div id="card" class="card"></div>
+
+  <!-- Button to get a new card -->
+  <button onclick="generateCard()">Draw New Card</button>
+
+  <script>
+    function generateCard() {
+      // All suits
+      let suits = ["spade", "club", "heart", "diamond"];
+
+      // Suit symbols
+      let symbols = {
+        spade: "♠",
+        club: "♣",
+        heart: "♥",
+        diamond: "♦"
+      };
+
+      
+      let values = ["2","3","4","5","6","7","8","9","10","J","Q","K","A","Joker"];
+
+      
+      let suitIndex = Math.floor(Math.random() * 4);
+
+      
+      let valueIndex = Math.floor(Math.random() * 13);
+
+      
+      let suit = suits[suitIndex];
+      let value = values[valueIndex];
+
+      
+      let cardDiv = document.getElementById("card");
+      cardDiv.className = "card " + suit; // base + one suit
+      cardDiv.innerHTML = `
+        <div class="corner top-left">${value}${symbols[suit]}</div>
+        ${value}${symbols[suit]}
+        <div class="corner bottom-right">${value}${symbols[suit]}</div>
+      `;
+    }
+
+    
+    window.onload = generateCard;
+  </script>
+</body>
 </html>
