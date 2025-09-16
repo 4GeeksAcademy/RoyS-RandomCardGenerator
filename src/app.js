@@ -17,15 +17,17 @@ function generateCard() {
   
   let cardDiv = document.getElementById("card");
 
-  cardDiv.className = "card " + suit;
+  // cardDiv.className = "card " + suit;
 
   cardDiv.innerHTML = `
-    <div class="corner top-left">${value}${suitSymbols[suit]}</div>
-    ${value}${suitSymbols[suit]}
-    <div class="corner bottom-right">${value}${suitSymbols[suit]}</div>
+    <div class="corner top-left ${suit}">${value}${suitSymbols[suit]}</div>
+    <div class="${suit}" >${value}${suitSymbols[suit]}</div>
+    <div class="corner bottom-right ${suit}">${value}${suitSymbols[suit]}</div>
   `;
 }
 
-
-window.onload = generateCard;
-
+window.onload = ()=> {
+const button = document.querySelector("button")
+button.addEventListener("click", generateCard)
+generateCard()
+};

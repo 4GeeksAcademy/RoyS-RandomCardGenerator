@@ -4,37 +4,37 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: green;
-  font-family: Arial, sans-serif;
+  background: purple;
+  font-family: Georgia, 'Times New Roman';
 }
 
 .card {
-  width: 150px;
-  height: 220px;
+  width: 250px;
+  height: 320px;
   border-radius: 12px;
-  background: white;
+  background: black;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  font-size: 5rem;
   font-weight: bold;
   position: relative;
-  box-shadow: 0 4px 15px rgba(50, 50, 50, 0.3);
-  margin-bottom: 20px;
+  box-shadow:  15px 15px rgba(50, 50, 50, 0.3);
+  margin-bottom: 25px;
 }
 
-.heart,
-.diamond {
-  color: red;
+.hearts,
+.diamonds {
+  color: silver;
 }
-.spade,
-.club {
-  color: black;
+.spades,
+.clubs {
+  color: goldenrod;
 }
 
 .corner {
   position: absolute;
-  font-size: 1rem;
+  font-size: 2rem;
 }
 .top-left {
   top: 10px;
@@ -47,13 +47,14 @@ body {
 }
 
 button {
-  padding: 10px 20px;
+  padding: 15px 20px;
   font-size: 1rem;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   background: white;
   font-weight: bold;
+
 }
 button:hover {
   background: lightgray;

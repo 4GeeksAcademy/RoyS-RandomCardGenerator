@@ -3,119 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="style.css" rel="stylesheet" />
     <title>Random Card Generator</title>
-    <style>
-      body {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background: rgb(237, 3, 245);
-        font-family: 
-      }
-
-      .card {
-        width: 250px;
-        height: 320px;
-        border-radius: 12px;
-        background: black;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 7rem;
-        font-weight: bold;
-        position: relative;
-        box-shadow:  15px 15px rgba(12, 12, 12, 0.3);
-        margin-bottom: 20px;
-      }
-
-      .heart,
-      .diamond {
-        color: goldenrod;
-      }
-      .spade,
-      .club {
-        color: silver;
-      }
-
-      .corner {
-        position: absolute;
-        font-size: 2rem;
-      }
-      .top-left {
-        top: 10px;
-        left: 10px;
-      }
-      .bottom-right {
-        bottom: 10px;
-        right: 10px;
-        transform: rotate(180deg);
-      }
-
-      button {
-        padding: 10px 20px;
-        font-size: 1rem;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        background: white;
-        font-weight: bold;
-      }
-      button:hover {
-        background: lightgray;
-      }
-    </style>
   </head>
-</body>
-    <div id="card" class="card"></div>
+  <body>
+    <div id="root">
+      <div class="table d-flex w-100 justify-content-center align-items-center">
+        <div id="card" class="card d-flex flex-column justify-content-between"></div>
+      </div>
 
-    <button onclick="generateCard()">Draw New Card</button>
+      <button>Draw New Card</button>
+    </div>
 
-    <script>
-      function generateCard() {
-        let suits = ["spade", "club", "heart", "diamond"];
-
-        let symbols = {
-          spade: "♠",
-          club: "♣",
-          heart: "♥",
-          diamond: "♦",
-        };
-
-        let values = [
-          "2",
-          "3",
-          "4",
-          "5",
-          "6",
-          "7",
-          "8",
-          "9",
-          "10",
-          "J",
-          "Q",
-          "K",
-          "A"
-        ];
-
-        let suitIndex = Math.floor(Math.random() * 4);
-
-        let valueIndex = Math.floor(Math.random() * 13);
-
-        let suit = suits[suitIndex];
-        let value = values[valueIndex];
-
-        let cardDiv = document.getElementById("card");
-        cardDiv.className = "card " + suit; 
-        cardDiv.innerHTML = `
-        <div class="corner top-left">${value}${symbols[suit]}</div>
-        ${value}${symbols[suit]}
-        <div class="corner bottom-right">${value}${symbols[suit]}</div>
-      `;
-      }
-
-      window.onload = generateCard;
-    </script>
+    <script type="module" src="./app.js"></script>
   </body>
 </html>
